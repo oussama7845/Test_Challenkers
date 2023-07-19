@@ -1,0 +1,68 @@
+.container_mes_citations{
+    width: 700px;
+    margin: auto;
+    margin-bottom: 5%;
+   
+}
+.title_mes_citations h2{
+    text-align: center;
+
+}
+
+.create_search{
+    display: grid;
+    grid-template-columns: 200px 480px;
+    grid-gap: 5px;
+}
+
+.btn_create button{
+    color: white;
+    font-family: 'Roboto Condensed';
+    background-color: #6303ac;
+    padding: 10px;
+    font-size: 16px;    
+    border-radius: 10px;
+    border: #6303ac;
+
+}
+.create{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create svg{
+    margin-right: 5px;
+}
+.search_bar input{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #6303ac;
+    width: 480px;
+    background-color: transparent;
+    
+}
+.search_bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+    
+}
+
+
+.search_bar input::placeholder{
+    color:#6303ac ;
+    font-family: 'Roboto Condensed';
+
+    font-weight: 600;
+}
+.search_icon {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+  }
+  

@@ -1,0 +1,29 @@
+
+.popup_container{
+
+background-color: #edebee;
+width: 400px;
+padding: 20px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.title_confirm_delete h3{
+    text-align: center;
+    margin: auto;
+}
+
+.btns-colonne{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+}
+
+.btns-colonne button{
+    color: white;
+    background-color: #6303ac;
+    border: none;
+    padding: 5px;
+}

@@ -1,0 +1,163 @@
+
+/*open popup*/
+
+
+
+.popup-content {
+  width: 500px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.popup-content h3{
+  font-family:"Montserrat";
+}
+
+.profile-popup-content {
+  background-color: #edebee;
+  width: 600px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-content p {
+  margin-bottom: 10px;
+}
+
+.popup-content button {
+  margin-right: 10px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
+.input-field {
+  padding: 12px 5px;
+}
+
+.input-field input::-webkit-input-placeholder {
+  text-transform: uppercase;
+}
+.input-field input::-moz-placeholder {
+  text-transform: uppercase;
+}
+.input-field input:-ms-input-placeholder {
+  text-transform: uppercase;
+}
+.input-field input::-ms-input-placeholder {
+  text-transform: uppercase;
+}
+.input-field input::placeholder {
+  text-transform: uppercase;
+}
+.input-field input:focus {
+  border-color: #222;
+}
+
+/*style modifier profil*/
+
+
+.content p {
+  font-family: "Open Sans";
+  color: black;
+}
+.content h3 {
+  font-family: "Montserrat";
+  color: black;
+}
+
+
+.colonne-step {
+  display: grid;
+  grid-template-columns: 250px 250px;
+  grid-gap: 50px;
+}
+
+.input-field {
+ 
+  display: block;
+}
+
+.input-field label {
+  display: block;
+  text-align: left;
+  font-family: "Montserrat";
+}
+
+.input-field input {
+  display: block;
+  margin-top: 5px; /* Ajoutez la marge supérieure souhaitée */
+  border-radius: 5px;
+  background-color: #ffffff;
+  height: 5px;
+  width: 250px;
+  padding: 15px;
+  border: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 15px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: #5a6474;
+}
+
+.line3 {
+  border-bottom: 1px solid rgba(123, 122, 122, 0.32);
+  width: 755px;
+  position: absolute;
+  left: 0;
+  margin-top: -15px;
+}
+
+label {
+  font-family: "Montserrat";
+}
+.title-profile{
+text-align: center;
+justify-content: center;
+}
+
+.container_btn_invite a {
+  text-decoration: none;
+  font-family: "Roboto Condensed";
+  color: white;
+  background-color: #6303ac;
+  font-weight: bold;
+  padding: 10px;
+  width: 270px;
+  text-align: center;
+  border-radius:10px ;
+}
+
+.container_btn_invite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+.margin{
+  display: grid;
+  grid-template-columns: 250px 250px;
+}
+
+.button-colonne{
+    display: grid;
+  grid-template-columns: auto auto;
+
+}

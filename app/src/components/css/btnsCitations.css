@@ -1,0 +1,43 @@
+.container_btns{
+    width: 450px;
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.title_btns h2{
+    text-align: center;
+}
+.btns{
+    display: grid;
+    grid-template-columns: 200px 250px;
+    grid-gap: 15px;
+}
+
+.btns button{
+    border-radius:10px ;
+    border: white;
+    background-color: white;
+    color: #6303ac;
+    padding: 10px 5px;
+    font-family: 'Roboto Condensed';
+    font-weight: bolder;
+    font-size: 16px;    
+    
+
+}
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn svg{
+    margin-right: 5px;
+}
+
+.line{
+    border: 1px solid #bab8bb;
+  margin-top: 10%;
+  width: 51.5%;
+margin: auto;
+}

@@ -1,0 +1,33 @@
+
+
+.container_mescitation{
+    width: 700px;
+    margin: auto;
+
+}
+
+.fetchallCitations .myquote{
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.myquote p{
+    color: black;
+}
+
+.btns_del_edit{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap:5px ;
+}
+
+
+
+
+.line1 , .line2{
+    border: 1px solid #bab8bb;
+    
+}

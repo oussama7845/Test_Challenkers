@@ -1,0 +1,20 @@
+{
+  "development": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "citations",
+    "username": "root",
+    "password": "Ytr123654789$a",
+    "dialect": "mysql",
+    "privateKey": "NotSoPrivateKey"
+  },
+  "production": {
+    "host": "db",
+    "port": 3306,
+    "database": "admin",
+    "username": "root",
+    "password": "8vjYo*Z+hd8H5UXa",
+    "dialect": "mysql",
+    "privateKey": "ToSetToAFuckingStrongPrivateKey"
+  }
+}

@@ -1,0 +1,36 @@
+
+.container_citations{
+    margin: auto;
+    width: 700px;
+}
+
+.container_border{
+    border: 4px solid #6303ac;
+    padding: 20px 30px;
+    border-radius: 20px;
+
+}
+.title h1{
+    text-align: center;
+}
+
+.quote h3{
+    text-align: center;
+    color: #6303ac;
+}
+.arthur p{
+    text-align: right;
+    font-weight: 500;
+}
+.container_favorite_btn{
+    display: flex;
+   align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans';
+    font-weight: 600;
+
+}
+.container_favorite_btn svg{
+    margin-right:5px ;
+}
+

@@ -24,16 +24,19 @@ router.get('/fetchallCitations', function (req, res) {
 
 // fetch citation by id 
   
-router.get('/fetchCitationById/:id', function (req, res) {
-  const Id = req.params.id;
-    
-  try {
-     
-   
-    Citation.findOne({where : { id : Id}}).then(citation => {
-      return res.status(200).json(citation);
-    });
 
+router.get('/fetchCitationById/:id', async (req, res) => {
+  const id = req.params.id;
+  
+  try {
+    const citation = await Citation.findOne({ where: { id } });
+
+    if (!citation) {
+      return res.status(404).json({ error: 'Citation non trouvée.' });
+    }
+    
+
+    return res.status(200).json(citation);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération du citation." });
@@ -41,15 +44,22 @@ router.get('/fetchCitationById/:id', function (req, res) {
 });
 
 
+
   // get a random quote of mine
   router.get('/fetchRandomCitation', async function (req, res) {
     try {
       const count = await Citation.count();
-      const randomIndex = Math.floor(Math.random() * count);
-      const citation = await Citation.findOne({
-        offset: randomIndex,
-      });
-      return res.status(200).json(citation);
+      if(count > 0){
+        const randomIndex = Math.floor(Math.random() * count);
+        const citation = await Citation.findOne({
+          offset: randomIndex,
+        });
+        return res.status(200).json(citation);
+
+      }else if(count === 0){
+        return res.status(201).json('empty');
+      }
+
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération de la citation aléatoire." });

@@ -1,9 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import "../css/btnsCitations.css";
+import DisplayCitations from "./displayCitations.tsx";
+
+
 
 function BtnsCitations() {
+
+
+  const [signalMyCitations, setSignalMyCitation] = useState(false);
+
+  const handleSignalMyCitation = () => {
+    setSignalMyCitation(true);
+  };
+
+
+
   return (
+
     <div>
+      <DisplayCitations 
+              detectSignalMyCitation={signalMyCitations}
+              resetSignal={() => setSignalMyCitation(false)}
+      />
+
 
     
     <div className="container_btns">
@@ -12,12 +31,12 @@ function BtnsCitations() {
       </div>
 
       <div className="btns">
-        <button className="myCitations">
+        <button className="myCitations"onClick={handleSignalMyCitation} >
           <div className="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="15"
-              height="15"
+              height="15" 
               viewBox="0 0 20 20"
             >
               <path

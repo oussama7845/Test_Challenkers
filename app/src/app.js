@@ -1,5 +1,4 @@
 import React from 'react';
-import DisplayCitations from './components/citations/displayCitations.tsx';
 import BtnsCitations from './components/citations/btnsCitations.tsx';
 import CreateSearch from './components/citations/createSearch.tsx';
 import MesCitations from './components/citations/mesCitations.tsx';
@@ -14,7 +13,7 @@ import './components/css/global.css';
 function App() {
   return (
     <div>
-      <DisplayCitations/>
+
       <BtnsCitations/>
       <CreateSearch/>
       <MesCitations/>

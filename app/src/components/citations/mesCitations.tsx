@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../css/mesCitations.css";
-import Edit from "../popups/edit.jsx";
-import Delete from "../popups/delete.jsx";
+import Edit from "../popups/edit";
+import Delete from "../popups/delete";
 import axios from 'axios';
 
 
 function MesCitations() {
   const [citations, setCitations] = useState([]);
+  const [signalEdit, setSignalEdit] = useState(false);
+
+
 
   useEffect(() => {
     getAllCitation();
@@ -29,14 +32,14 @@ function MesCitations() {
 
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
-  const [showDetailsEditPopup, setShowDetailsEditPopup] = useState(false);
   const [idCitation, setIdCitation] = useState('');
 
 
   const editButton = (id) => {
     setShowEditPopup(true);
     setIdCitation(id);
-    setShowDetailsEditPopup(true);
+    setSignalEdit(true);
+
 
 
   };
@@ -50,6 +53,7 @@ function MesCitations() {
 
   const closeEditPopup = () => {
     setShowEditPopup(false);
+
   };
 
   const closeDeletePopup = () => {
@@ -108,7 +112,7 @@ function MesCitations() {
         <p>Aucune citation disponible</p>
       )}
   
-      <Edit showDetailsEditPopup ={showDetailsEditPopup} showEditPopup={showEditPopup} idCitation={idCitation} closeEditPopup={closeEditPopup} />
+      <Edit detectSignalEdit={signalEdit} resetSignal={() => setSignalEdit(false)}  showEditPopup={showEditPopup} idCitation={idCitation} closeEditPopup={closeEditPopup} />
       <Delete showDeletePopup={showDeletePopup} idCitation={idCitation} closeDeletePopup={closeDeletePopup} />
     </div>
   );

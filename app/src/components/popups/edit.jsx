@@ -4,8 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
  
-function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup }) {
-  const [citations, setCitations] = useState([]);
+function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEditPopup }) {
 
     const [citation, setcitation] = useState('');
     const [auteur, setauteur] = useState('');
@@ -13,21 +12,24 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
     const [personnage, setpersonnage] = useState('');
     const [saison, setsaison] = useState('');
     const [episode, setepisode] = useState('');
+    const [cita, setCitations] = useState([]);
 
 
   useEffect(() => {
-    if (showDetailsEditPopup) {
+    if (detectSignalEdit) {
       getCitationDetails();
+      resetSignal();
     }
-  }, [showDetailsEditPopup]);
+  }, [detectSignalEdit]);
 
 
     const getCitationDetails = async () => {
-      console.log("1")
     
     try {
+      console.log("id",idCitation)
+      
+
       const response = await axios.get(`http://localhost:3000/fetchCitationById/${idCitation}`);
-      console.log(response)
       
       const { data, status } = response;
       if (status === 200) {
@@ -91,7 +93,7 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
                 <label >Citation</label>
                 <input
                   id="citation"
-                  defaultValue={citations.citation}
+                  Value={cita.citation}
                   onChange={(e) => setcitation(e.target.value)}
                   type="text"
                   placeholder="modifier votre citation"
@@ -101,7 +103,7 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
                 <label >auteur</label>
                 <input
                   id="auteur"
-                  defaultValue={citations.auteur}
+                  Value={cita.auteur}
                   onChange={(e) => setauteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
@@ -112,7 +114,7 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
                 <label >episode</label>
                 <input
                   id="episode"
-                  defaultValue={citations.episode}
+                  Value={cita.episode}
                   onChange={(e) => setepisode(e.target.value)}
                   type="text"
                   placeholder="quelle épisode ?"
@@ -126,7 +128,7 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
                 <label >acteur</label>
                 <input
                   id="acteur"
-                  defaultValue={citations.acteur}
+                  defaultValue={cita.acteur}
                   onChange={(e) => setacteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
@@ -138,7 +140,7 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
                  
                 </label>
                 <input
-                  defaultValue={citations.personnage}
+                  defaultValue={cita.personnage}
                   onChange={(e) => setpersonnage(e.target.value)}
                   id="personnage"
                   type="text"
@@ -150,7 +152,7 @@ function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup 
                 <label >saison</label>
                 <input
                   id="saison"
-                  defaultValue={citations.saison}
+                  defaultValue={cita.saison}
                   onChange={(e) => setsaison(e.target.value)}
                   type="text"
                   placeholder="quelle saison ?"

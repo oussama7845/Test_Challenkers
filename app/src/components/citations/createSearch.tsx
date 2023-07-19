@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../css/createSearch.css";
-import Create from "../popups/create.jsx";
+import Create from "../popups/create";
 function CreateSearch() {
   const [showCreatePopup, setShowCreatePopup] = useState(false);
 

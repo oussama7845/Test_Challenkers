@@ -1,13 +1,44 @@
 import React, { useState } from "react";
 import "../css/edit.css";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 function Create({ showCreatePopup, closeCreatePopup }) {
-    const [citation, setcitation] = useState('');
-    const [auteur, setauteur] = useState('');
-    const [acteur, setacteur] = useState('');
-    const [personnage, setpersonnage] = useState('');
-    const [saison, setsaison] = useState('');
-    const [episode, setepisode] = useState('');
+  const [citation, setcitation] = useState("");
+  const [auteur, setauteur] = useState("");
+  const [acteur, setacteur] = useState("");
+  const [personnage, setpersonnage] = useState("");
+  const [saison, setsaison] = useState("");
+  const [episode, setepisode] = useState("");
+
+  const confirmCreateCitation = async () => {
+    try {
+      let body = {
+        citation: citation,
+        auteur: auteur,
+        acteur: acteur,
+        personnage: personnage,
+        saison: saison,
+        episode: episode,
+      };
+
+      const response = await axios.post("http://localhost:3000/create_Citation",body);
+
+      if (response.status === 201) {
+        toast.success("Citation enregistré avec succès");
+        closeCreatePopup(); // appeler la function qui close le pop up
+       
+      } else {
+        toast.error("error");
+
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("error");
+    }
+  };
+
+
   return showCreatePopup ? (
 
     
@@ -99,7 +130,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
 
           <div className="button-colonne margin">
             <div className="container_btn_invite">
-              <a  href="#" className="btn1">
+              <a onClick={confirmCreateCitation}  href="#" className="btn1">
                 Confirmer
               </a>
             </div>

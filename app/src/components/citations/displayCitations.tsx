@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/displayCitations.css';
+import axios from 'axios';
 
 function DisplayCitations() {
+  const [citation, setcitation] = useState('');
+  const [personnage, setpersonnage] = useState('');
+  const [episode, setepisode] = useState('');
+
+  useEffect(() => {
+    getRandomCitation();
+  }, []);
+
+  const getRandomCitation = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/fetchRandomCitation');
+      const { data, status } = response;
+      if (status === 200) {
+        const { citation, personnage, episode } = data;
+        setcitation(citation);
+        setpersonnage(personnage);
+        setepisode(episode);
+      } else {
+        throw new Error('Erreur lors de la récupération de la citation aléatoire.');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
   return (
     <div className='container_citations'>
       <div className='title'>
@@ -9,10 +36,10 @@ function DisplayCitations() {
       </div>
 <div className='container_border'>
           <div className='quote'>
-        <h3>"je crois qu'il faut que vous arretiez d'essayer de dire des trucs"</h3>
+        <h3> {citation} </h3>
       </div>
       <div className='arthur'>
-        <p>personnage - 'Episode'</p>
+        <p>{personnage} - '{episode}'</p>
       </div>
       <div className='container_favorite_btn'>
         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">

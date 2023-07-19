@@ -9,7 +9,7 @@
 .fetchallCitations .myquote{
     align-items: center;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 550px 50px;
     grid-gap: 30px;
     align-items: center;
     justify-content: center;

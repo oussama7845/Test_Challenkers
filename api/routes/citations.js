@@ -5,6 +5,7 @@ let path = require('path');
 let env = process.env.NODE_ENV || "development";
 let config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
+
 // Get All quotes
 router.get('/fetchallCitations', function (req, res) {
     
@@ -14,13 +15,30 @@ router.get('/fetchallCitations', function (req, res) {
       Citation.findAll().then(citations => {
         return res.status(200).json(citations);
       });
-    } catch (error) {
-        
 
+    } catch (error) {
       console.error(error);
       return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération des citations." });
     }
   });
+
+
+  // get a random quote of mine
+  router.get('/fetchRandomCitation', async function (req, res) {
+    try {
+      const count = await Citation.count();
+      const randomIndex = Math.floor(Math.random() * count);
+      const citation = await Citation.findOne({
+        offset: randomIndex,
+      });
+      return res.status(200).json(citation);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération de la citation aléatoire." });
+    }
+  });
+  
+  
   
 
 //add a quote

@@ -1,13 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/edit.css";
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
-function Edit({ showEditPopup, closeEditPopup }) {
+ 
+function Edit({ showEditPopup, idCitation, showDetailsEditPopup, closeEditPopup }) {
+  const [citations, setCitations] = useState([]);
+
     const [citation, setcitation] = useState('');
     const [auteur, setauteur] = useState('');
     const [acteur, setacteur] = useState('');
     const [personnage, setpersonnage] = useState('');
     const [saison, setsaison] = useState('');
     const [episode, setepisode] = useState('');
+
+
+  useEffect(() => {
+    if (showDetailsEditPopup) {
+      getCitationDetails();
+    }
+  }, [showDetailsEditPopup]);
+
+
+    const getCitationDetails = async () => {
+      console.log("1")
+    
+    try {
+      const response = await axios.get(`http://localhost:3000/fetchCitationById/${idCitation}`);
+      console.log(response)
+      
+      const { data, status } = response;
+      if (status === 200) {
+        setCitations(data);
+     
+      } else {
+        throw new Error('Erreur lors de la récupération des citations.');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+    
+
+
+    const confirm = async () => {
+      try {
+        let body = {
+          citation: citation,
+          auteur: auteur,
+          acteur: acteur,
+          personnage: personnage,
+          saison: saison,
+          episode: episode,
+        };
+  
+        const response = await axios.put(`http://localhost:3000/edit_Citation/${idCitation}`,body);
+  
+        if (response.status === 200) {
+          closeEditPopup(); // appeler la function qui close le pop up
+           window.location.reload();
+          toast.success("modification est faite avec succès");
+  
+          
+        } else {
+          toast.error("error");
+  
+        }
+      } catch (err) {
+        console.log(err);
+        toast.error("error");
+      }
+    };
+
+
+
   return showEditPopup ? (
 
     
@@ -24,7 +91,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
                 <label >Citation</label>
                 <input
                   id="citation"
-                  value={citation}
+                  defaultValue={citations.citation}
                   onChange={(e) => setcitation(e.target.value)}
                   type="text"
                   placeholder="modifier votre citation"
@@ -34,7 +101,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
                 <label >auteur</label>
                 <input
                   id="auteur"
-                  value={auteur}
+                  defaultValue={citations.auteur}
                   onChange={(e) => setauteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
@@ -45,7 +112,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
                 <label >episode</label>
                 <input
                   id="episode"
-                  value={episode}
+                  defaultValue={citations.episode}
                   onChange={(e) => setepisode(e.target.value)}
                   type="text"
                   placeholder="quelle épisode ?"
@@ -59,7 +126,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
                 <label >acteur</label>
                 <input
                   id="acteur"
-                  value={acteur}
+                  defaultValue={citations.acteur}
                   onChange={(e) => setacteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
@@ -71,7 +138,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
                  
                 </label>
                 <input
-                  value={personnage}
+                  defaultValue={citations.personnage}
                   onChange={(e) => setpersonnage(e.target.value)}
                   id="personnage"
                   type="text"
@@ -83,7 +150,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
                 <label >saison</label>
                 <input
                   id="saison"
-                  value={saison}
+                  defaultValue={citations.saison}
                   onChange={(e) => setsaison(e.target.value)}
                   type="text"
                   placeholder="quelle saison ?"
@@ -99,7 +166,7 @@ function Edit({ showEditPopup, closeEditPopup }) {
 
           <div className="button-colonne margin">
             <div className="container_btn_invite">
-              <a  href="#" className="btn1">
+              <a  href="#" className="btn1" onClick={confirm}>
                 Confirmer
               </a>
             </div>

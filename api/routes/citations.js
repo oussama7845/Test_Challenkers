@@ -22,6 +22,24 @@ router.get('/fetchallCitations', function (req, res) {
     }
   });
 
+// fetch citation by id 
+  
+router.get('/fetchCitationById/:id', function (req, res) {
+  const Id = req.params.id;
+    
+  try {
+     
+   
+    Citation.findOne({where : { id : Id}}).then(citation => {
+      return res.status(200).json(citation);
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération du citation." });
+  }
+});
+
 
   // get a random quote of mine
   router.get('/fetchRandomCitation', async function (req, res) {
@@ -112,7 +130,7 @@ router.delete('/citation/:id', function(req, res) {
         return res.status(404).json({ message: "Citation n'a pas été trouvé." });
       }
   
-      // delete teh quote from the data base 
+      // delete the quote from the data base 
       citation.destroy().then(() => {
         return res.status(200).json({ message: "Citation a été supprimé avec succès." });
       }).catch(err => {

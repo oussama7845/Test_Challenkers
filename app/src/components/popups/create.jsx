@@ -25,9 +25,11 @@ function Create({ showCreatePopup, closeCreatePopup }) {
       const response = await axios.post("http://localhost:3000/create_Citation",body);
 
       if (response.status === 201) {
+         closeCreatePopup(); // appeler la function qui close le pop up
+         window.location.reload();
         toast.success("Citation enregistré avec succès");
-        closeCreatePopup(); // appeler la function qui close le pop up
-       
+
+        
       } else {
         toast.error("error");
 

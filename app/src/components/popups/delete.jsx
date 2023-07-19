@@ -1,10 +1,36 @@
 import React, { useState } from "react";
 import "../css/delete.css";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-function Delete({ showDeletePopup, closeDeletePopup }) {
+
+
+function Delete({ showDeletePopup, idCitation , closeDeletePopup }) {
+
+
+  const confirm = async () => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/citation/${idCitation}`);
+      
+      if (response.status === 200) {
+        closeDeletePopup();
+        window.location.reload();
+        toast.success('Citations supprimer avec succès');
+
+        
+     
+      } else {
+        throw new Error('Erreur lors de la récupération des citations.');
+      }
+    }
+      
+     catch (err) {
+      console.error(err);
+    }
+  };
+  
     
   return showDeletePopup ? (
-
 
 
 <div className="popup">
@@ -15,7 +41,7 @@ function Delete({ showDeletePopup, closeDeletePopup }) {
         </div>
         <br />
         <div  className="btns-colonne">
-          <button 
+          <button onClick={confirm}
             className="container_btn_confirm"
             
           >

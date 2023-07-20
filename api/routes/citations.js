@@ -4,6 +4,24 @@ let Citation = require('../models').citations;
 let path = require('path');
 let env = process.env.NODE_ENV || "development";
 let config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
+const axios= require('axios');
+
+
+// we can't call the kaamelott api from the front because both server are not in the same domaine (error :: cros) 
+//solution ? call the kaamelott from the backend and then call the /api/random in th front :)
+
+router.get("/api/random", async (req, res) => {
+  try {
+    const response = await axios.get("https://kaamelott.chaudie.re/api/random");
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error:", error); 
+    res.status(500).json({ error: "Erreur lors de l'appel à l'API externe." });
+  }
+});
+
+
+
 
 
 // Get All quotes

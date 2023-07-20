@@ -2,7 +2,6 @@ let express = require('express');
 let path = require('path');
 let fs = require('fs');
 let bodyParser = require('body-parser');
-let cors = require('cors');
 let cluster = require('cluster');
 let helmet = require('helmet');
 
@@ -11,7 +10,6 @@ let app = express();
 // Amélioration de la securité
 app.use(helmet())
 // Enable CORS
-app.use(cors());
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,5 +50,4 @@ app.get('/', function (req, res) {
 });
 
 app.use('/', require('./routes/citations'));
-// app.use('/', require('./routes/votes'));
 

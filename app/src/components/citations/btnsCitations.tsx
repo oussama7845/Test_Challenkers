@@ -8,9 +8,15 @@ function BtnsCitations() {
 
 
   const [signalMyCitations, setSignalMyCitation] = useState(false);
+  const [signalKaamelottCitations, setSignalKaamelottCitation] = useState(false);
+
 
   const handleSignalMyCitation = () => {
     setSignalMyCitation(true);
+  };
+
+  const handleKaamelottCitations = () => {
+    setSignalKaamelottCitation(true);
   };
 
 
@@ -19,6 +25,11 @@ function BtnsCitations() {
 
     <div>
       <DisplayCitations 
+
+detectSignalKaamelottCitation={signalKaamelottCitations}
+resetKaamelottSignal={() => setSignalKaamelottCitation(false)}
+
+              
               detectSignalMyCitation={signalMyCitations}
               resetSignal={() => setSignalMyCitation(false)}
       />
@@ -51,7 +62,7 @@ function BtnsCitations() {
           </div>
         </button>
 
-        <button className="KaamelottCitations">
+        <button className="KaamelottCitations" onClick={handleKaamelottCitations}>
           <div className="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"

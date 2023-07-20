@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../css/displayCitations.css';
 import axios from 'axios';
 
-function DisplayCitations( {detectSignalMyCitation, resetSignal }) {
+
+function DisplayCitations( {detectSignalKaamelottCitation,resetKaamelottSignal, detectSignalMyCitation, resetSignal }) {
   const [citation, setcitation] = useState('');
   const [personnage, setpersonnage] = useState('');
   const [episode, setepisode] = useState('');
@@ -14,6 +15,39 @@ function DisplayCitations( {detectSignalMyCitation, resetSignal }) {
       resetSignal();
     }
   }, [detectSignalMyCitation]);
+
+  useEffect(() => {
+    if (detectSignalKaamelottCitation) {
+      getRandomKaamelottCitation();
+      resetKaamelottSignal();
+    }
+  }, [detectSignalKaamelottCitation]);
+
+
+  
+// we can't call the kaamelott api from the front because both server are not in the same domaine (error :: cros) 
+//solution ? call the kaamelott from the backend and then call the /api/random in th front :)
+
+  const getRandomKaamelottCitation = async () => {
+
+  const apiUrl = "http://localhost:3000/api/random"; 
+
+axios.get(apiUrl)
+  .then(response => {
+
+    setcitation(response.data.citation.citation) 
+    setpersonnage(response.data.citation.infos.personnage);
+    setepisode(response.data.citation.infos.episode) ;
+    setcheckEmptyRandom(0);
+
+    
+  })
+  .catch(error => {
+    console.log("Erreur lors de l'appel à l'API via votre serveur backend.", error);
+  });
+
+  };
+  
   
 
   const getRandomCitation = async () => {

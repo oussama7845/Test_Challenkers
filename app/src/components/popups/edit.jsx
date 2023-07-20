@@ -12,7 +12,6 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
     const [personnage, setpersonnage] = useState('');
     const [saison, setsaison] = useState('');
     const [episode, setepisode] = useState('');
-    const [cita, setCitations] = useState([]);
 
 
   useEffect(() => {
@@ -33,7 +32,15 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
       
       const { data, status } = response;
       if (status === 200) {
-        setCitations(data);
+        setcitation(data.citation);
+        setauteur(data.auteur);
+        setacteur(data.acteur);
+        setpersonnage(data.personnage);
+        setsaison(data.saison);
+        setepisode(data.episode);
+
+
+
      
       } else {
         throw new Error('Erreur lors de la récupération des citations.');
@@ -93,7 +100,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <label >Citation</label>
                 <input
                   id="citation"
-                  Value={cita.citation}
+                  Value={citation}
                   onChange={(e) => setcitation(e.target.value)}
                   type="text"
                   placeholder="modifier votre citation"
@@ -103,7 +110,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <label >auteur</label>
                 <input
                   id="auteur"
-                  Value={cita.auteur}
+                  Value={auteur}
                   onChange={(e) => setauteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
@@ -114,7 +121,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <label >episode</label>
                 <input
                   id="episode"
-                  Value={cita.episode}
+                  Value={episode}
                   onChange={(e) => setepisode(e.target.value)}
                   type="text"
                   placeholder="quelle épisode ?"
@@ -128,7 +135,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <label >acteur</label>
                 <input
                   id="acteur"
-                  defaultValue={cita.acteur}
+                  defaultValue={acteur}
                   onChange={(e) => setacteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
@@ -140,7 +147,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                  
                 </label>
                 <input
-                  defaultValue={cita.personnage}
+                  defaultValue={personnage}
                   onChange={(e) => setpersonnage(e.target.value)}
                   id="personnage"
                   type="text"
@@ -152,7 +159,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <label >saison</label>
                 <input
                   id="saison"
-                  defaultValue={cita.saison}
+                  defaultValue={saison}
                   onChange={(e) => setsaison(e.target.value)}
                   type="text"
                   placeholder="quelle saison ?"

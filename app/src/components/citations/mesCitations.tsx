@@ -3,13 +3,15 @@ import "../css/mesCitations.css";
 import Edit from "../popups/edit";
 import Delete from "../popups/delete";
 import axios from 'axios';
+import { search } from "../../../../api/routes/citations";
 
 
-function MesCitations() {
+function MesCitations(searchTerm) {
   const [citations, setCitations] = useState([]);
   const [signalEdit, setSignalEdit] = useState(false);
 
 
+  console.log(searchTerm);
 
   useEffect(() => {
     getAllCitation();

@@ -4,12 +4,16 @@ let fs = require('fs');
 let bodyParser = require('body-parser');
 let cluster = require('cluster');
 let helmet = require('helmet');
+const cors = require('cors');
 
 let app = express();
 
 // Amélioration de la securité
 app.use(helmet())
+
 // Enable CORS
+app.use(cors());
+
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: false }));

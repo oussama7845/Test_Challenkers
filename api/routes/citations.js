@@ -41,7 +41,7 @@ router.get('/rechercher', async (req, res) => {
       res.status(200).json(citations);
 
     }else{
-      res.status(201);
+      res.status(201).json([]);
     }
   } catch (error) {
     console.error(error);

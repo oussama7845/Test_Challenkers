@@ -31,3 +31,6 @@
     border: 1px solid #bab8bb;
     
 }
+.emptyquote , .emptysearchquote{
+    text-align: center;
+}

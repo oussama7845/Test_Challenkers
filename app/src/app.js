@@ -1,6 +1,6 @@
 import React from 'react';
-import BtnsCitations from './components/citations/btnsCitations.tsx';
-import CreateSearch from './components/citations/createSearch.tsx';
+import BtnsCitations from './components/citations/btnsCitations';
+import CreateSearch from './components/citations/createSearch';
 import Edit from './components/popups/edit.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

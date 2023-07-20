@@ -47,7 +47,7 @@ function DisplayCitations({
       .then((res) => res.json())
       .then((data) => {
         setcheckEmptyRandom(0);
-        // const { citation, personnage, episode,saison , auteur, acteur } = data.citation;
+
         setcitation(data.citation.citation);
         setpersonnage(data.infos.personnage);
         setepisode(data.infos.episode);

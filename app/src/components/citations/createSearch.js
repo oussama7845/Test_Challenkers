@@ -6,7 +6,8 @@ import MesCitations from "./mesCitations.tsx";
 
 function CreateSearch() {
   const [showCreatePopup, setShowCreatePopup] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [resSearch, setResSearch] = useState(1); 
 
   const closeCreatePopup = () => {
     setShowCreatePopup(false);
@@ -26,10 +27,11 @@ function CreateSearch() {
 
       if (response.data.length > 0) {
         // Des citations ont été trouvées
-        setSearchTerm(response.data);
+        setResSearch(response.data);
       } else {
         // Aucune citation trouvée
-        console.log("Aucune citation trouvée pour le terme de recherche :", searchTerm);
+        console.log("Aucune citation trouvée pour le terme de recherche");
+        setResSearch(response.data)
       }
     } catch (error) {
       console.error("Une erreur est survenue lors de la recherche des citations :", error);
@@ -104,7 +106,11 @@ function CreateSearch() {
 
 
     </div>
-    <MesCitations searchTerm={searchTerm}  />
+    <MesCitations 
+ 
+     resSearch={resSearch}  
+
+     />
 
     </div>
 

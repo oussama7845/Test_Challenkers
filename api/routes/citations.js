@@ -8,24 +8,13 @@ const axios= require('axios');
 const { Op, where } = require('sequelize');
 
 
-// we can't call the kaamelott api from the front because both server are not in the same domaine (error :: cros) 
-//solution ? call the kaamelott from the backend and then call the /api/random in th front :)
 
-router.get("/api/random", async (req, res) => {
-  try {
-    const response = await axios.get("https://kaamelott.chaudie.re/api/random");
-    res.status(200).json(response.data);
-  } catch (error) {
-    console.error("Error:", error); 
-    res.status(500).json({ error: "Erreur lors de l'appel à l'API externe." });
-  }
-});
 
 
 // search bar
 
 router.get('/rechercher', async (req, res) => {
-  const searchTerm = req.query.searchTerm; // La chaîne à rechercher (dans cet exemple, "la vie")
+  const searchTerm = req.query.searchTerm; // La chaîne à rechercher (par exemple cet exemple, "la vie")
 
   try {
     // Utilisez le critère de recherche "LIKE" avec le caractère joker "%" pour récupérer les citations qui commencent par "la vie"
@@ -34,6 +23,7 @@ router.get('/rechercher', async (req, res) => {
         citation: {
           [Op.like]: `${searchTerm}%`,
         },
+        favorite: false // afficher juste mes citations
       },
     });
 

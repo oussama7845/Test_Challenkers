@@ -9,12 +9,12 @@ function DisplayCitations({
   detectSignalMyCitation,
   resetSignal,
 }) {
-  const [citation, setcitation] = useState("");
-  const [personnage, setpersonnage] = useState("");
-  const [episode, setepisode] = useState("");
-  const [saison, setsaison] = useState("");
-  const [auteur, setauteur] = useState("");
-  const [acteur, setacteur] = useState("");
+  const [citation, setCitation] = useState("");
+  const [personnage, setPersonnage] = useState("");
+  const [episode, setEpisode] = useState("");
+  const [saison, setSaison] = useState("");
+  const [auteur, setAuteur] = useState("");
+  const [acteur, setActeur] = useState("");
   const [checkEmptyRandom, setcheckEmptyRandom] = useState(10);
 
   useEffect(() => {
@@ -48,12 +48,12 @@ function DisplayCitations({
       .then((data) => {
         setcheckEmptyRandom(0);
 
-        setcitation(data.citation.citation);
-        setpersonnage(data.infos.personnage);
-        setepisode(data.infos.episode);
-        setsaison(data.infos.saison);
-        setauteur(data.infos.auteur);
-        setacteur(data.infos.acteur);
+        setCitation(data.citation.citation);
+        setPersonnage(data.infos.personnage);
+        setEpisode(data.infos.episode);
+        setSaison(data.infos.saison);
+        setAuteur(data.infos.auteur);
+        setActeur(data.infos.acteur);
 
       })
       .catch((err) => {
@@ -77,9 +77,9 @@ function DisplayCitations({
       );
 
       if (response.status === 200 || response.status === 202) {
-        toast.success("Citation enregistrer avec suucèes");
+        toast.success("Citation enregistrée avec succès");
       } else if (response.status === 201) {
-        toast.info("Citation est déjà enregistrer");
+        toast.info("La citation est déjà enregistrée");
       }
     } catch (err) {
       toast.error(
@@ -100,12 +100,12 @@ function DisplayCitations({
         setcheckEmptyRandom(0);
 
         const { citation, personnage, episode,saison, acteur,auteur } = data;
-        setcitation(citation);
-        setpersonnage(personnage);
-        setepisode(episode);
-        setsaison(saison);
-        setauteur(auteur);
-        setacteur(acteur);
+        setCitation(citation);
+        setPersonnage(personnage);
+        setEpisode(episode);
+        setSaison(saison);
+        setAuteur(auteur);
+        setActeur(acteur);
       } else if (status === 201) {
         setcheckEmptyRandom(1);
 

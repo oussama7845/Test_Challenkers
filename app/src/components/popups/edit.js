@@ -6,12 +6,12 @@ import axios from 'axios';
  
 function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEditPopup }) {
 
-    const [citation, setcitation] = useState('');
-    const [auteur, setauteur] = useState('');
-    const [acteur, setacteur] = useState('');
-    const [personnage, setpersonnage] = useState('');
-    const [saison, setsaison] = useState('');
-    const [episode, setepisode] = useState('');
+    const [citation, setCitation] = useState('');
+    const [auteur, setAuteur] = useState('');
+    const [acteur, setActeur] = useState('');
+    const [personnage, setPersonnage] = useState('');
+    const [saison, setSaison] = useState('');
+    const [episode, setEpisode] = useState('');
 
 
   useEffect(() => {
@@ -32,12 +32,12 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
       
       const { data, status } = response;
       if (status === 200) {
-        setcitation(data.citation);
-        setauteur(data.auteur);
-        setacteur(data.acteur);
-        setpersonnage(data.personnage);
-        setsaison(data.saison);
-        setepisode(data.episode);
+        setCitation(data.citation);
+        setAuteur(data.auteur);
+        setActeur(data.acteur);
+        setPersonnage(data.personnage);
+        setSaison(data.saison);
+        setEpisode(data.episode);
 
 
 
@@ -69,16 +69,16 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
         if (response.status === 200) {
           closeEditPopup(); // appeler la function qui close le pop up
            window.location.reload();
-          toast.success("modification est faite avec succès");
+          toast.success("Citation modifiée avec succès");
   
           
         } else {
-          toast.error("error");
+          toast.error("erreur");
   
         }
       } catch (err) {
         console.log(err);
-        toast.error("error");
+        toast.error("erreur");
       }
     };
 
@@ -101,7 +101,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <input
                   id="citation"
                   Value={citation}
-                  onChange={(e) => setcitation(e.target.value)}
+                  onChange={(e) => setCitation(e.target.value)}
                   type="text"
                   placeholder="modifier votre citation"
                 />
@@ -111,7 +111,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <input
                   id="auteur"
                   Value={auteur}
-                  onChange={(e) => setauteur(e.target.value)}
+                  onChange={(e) => setAuteur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
                 />
@@ -122,7 +122,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <input
                   id="episode"
                   Value={episode}
-                  onChange={(e) => setepisode(e.target.value)}
+                  onChange={(e) => setEpisode(e.target.value)}
                   type="text"
                   placeholder="quelle épisode ?"
                 />
@@ -136,7 +136,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <input
                   id="acteur"
                   defaultValue={acteur}
-                  onChange={(e) => setacteur(e.target.value)}
+                  onChange={(e) => setActeur(e.target.value)}
                   type="text"
                   placeholder="modifier le nom de l'auteur"
                 />
@@ -148,7 +148,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 </label>
                 <input
                   defaultValue={personnage}
-                  onChange={(e) => setpersonnage(e.target.value)}
+                  onChange={(e) => setPersonnage(e.target.value)}
                   id="personnage"
                   type="text"
                   placeholder="modifier le nom de personnage"
@@ -160,7 +160,7 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
                 <input
                   id="saison"
                   defaultValue={saison}
-                  onChange={(e) => setsaison(e.target.value)}
+                  onChange={(e) => setSaison(e.target.value)}
                   type="text"
                   placeholder="quelle saison ?"
                 />

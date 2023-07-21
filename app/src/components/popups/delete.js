@@ -15,7 +15,7 @@ function Delete({ showDeletePopup, idCitation , closeDeletePopup }) {
       if (response.status === 200) {
         closeDeletePopup();
         window.location.reload();
-        toast.success('Citations supprimer avec succès');
+        toast.success('Citation supprimée avec succès');
 
         
      

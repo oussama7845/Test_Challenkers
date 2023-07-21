@@ -4,12 +4,12 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 
 function Create({ showCreatePopup, closeCreatePopup }) {
-  const [citation, setcitation] = useState("");
-  const [auteur, setauteur] = useState("");
-  const [acteur, setacteur] = useState("");
-  const [personnage, setpersonnage] = useState("");
-  const [saison, setsaison] = useState("");
-  const [episode, setepisode] = useState("");
+  const [citation, setCitation] = useState("");
+  const [auteur, setAuteur] = useState("");
+  const [acteur, setActeur] = useState("");
+  const [personnage, setPersonnage] = useState("");
+  const [saison, setSaison] = useState("");
+  const [episode, setEpisode] = useState("");
 
   const confirmCreateCitation = async () => {
     try {
@@ -27,16 +27,16 @@ function Create({ showCreatePopup, closeCreatePopup }) {
       if (response.status === 201) {
          closeCreatePopup(); // appeler la function qui close le pop up
          window.location.reload();
-        toast.success("Citation enregistré avec succès");
+        toast.success("Citation enregistrée avec succès");
 
         
       } else {
-        toast.error("error");
+        toast.error("erreur");
 
       }
     } catch (err) {
       console.log(err);
-      toast.error("error");
+      toast.error("erreur");
     }
   };
 
@@ -58,7 +58,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
                 <input
                   id="citation"
                   value={citation}
-                  onChange={(e) => setcitation(e.target.value)}
+                  onChange={(e) => setCitation(e.target.value)}
                   type="text"
                   placeholder="Créer votre citation"
                 />
@@ -68,7 +68,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
                 <input
                   id="auteur"
                   value={auteur}
-                  onChange={(e) => setauteur(e.target.value)}
+                  onChange={(e) => setAuteur(e.target.value)}
                   type="text"
                   placeholder="Nom de l'auteur"
                 />
@@ -79,7 +79,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
                 <input
                   id="episode"
                   value={episode}
-                  onChange={(e) => setepisode(e.target.value)}
+                  onChange={(e) => setEpisode(e.target.value)}
                   type="text"
                   placeholder="quelle épisode ?"
                 />
@@ -93,7 +93,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
                 <input
                   id="acteur"
                   value={acteur}
-                  onChange={(e) => setacteur(e.target.value)}
+                  onChange={(e) => setActeur(e.target.value)}
                   type="text"
                   placeholder="Nom de l'acteur"
                 />
@@ -105,7 +105,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
                 </label>
                 <input
                   value={personnage}
-                  onChange={(e) => setpersonnage(e.target.value)}
+                  onChange={(e) => setPersonnage(e.target.value)}
                   id="personnage"
                   type="text"
                   placeholder="Nom de personnage"
@@ -117,7 +117,7 @@ function Create({ showCreatePopup, closeCreatePopup }) {
                 <input
                   id="saison"
                   value={saison}
-                  onChange={(e) => setsaison(e.target.value)}
+                  onChange={(e) => setSaison(e.target.value)}
                   type="text"
                   placeholder="quelle saison ?"
                 />

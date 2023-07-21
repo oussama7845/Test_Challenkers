@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './components/css/global.css';
 
+//j'ai pas utiliser le folder pages car j'ai une seul page 
+
 function App() {
   return (
     <div>

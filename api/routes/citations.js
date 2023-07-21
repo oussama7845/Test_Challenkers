@@ -21,7 +21,7 @@ router.get('/rechercher', async (req, res) => {
     const citations = await Citation.findAll({
       where: {
         citation: {
-          [Op.like]: `${searchTerm}%`,
+          [Op.like]: `%${searchTerm}%`,
         },
         favorite: false // afficher juste mes citations
       },

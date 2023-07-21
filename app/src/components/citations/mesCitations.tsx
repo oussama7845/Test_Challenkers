@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/mesCitations.css";
+import "../css/favorite.css";
 import Edit from "../popups/edit";
 import Delete from "../popups/delete";
 import axios from 'axios';
@@ -11,7 +11,7 @@ function MesCitations(resSearch) {
 
 
 
-  console.log(resSearch.resSearch.length);
+ 
   useEffect(() => {
     getAllCitation();
   }, []);

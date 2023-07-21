@@ -1,0 +1,33 @@
+.titleFavorite{
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+
+.container_mescitation{
+    width: 700px;
+    margin: auto;
+
+}
+
+.fetchallCitations .myfavorite{
+    text-align: center;
+    justify-content: center;
+}
+.myfavorite p{
+    color: black;
+}
+
+
+
+
+
+
+.line1 , .line2{
+    border: 1px solid #bab8bb;
+    
+}
+.emptyquote {
+    text-align: center;
+}

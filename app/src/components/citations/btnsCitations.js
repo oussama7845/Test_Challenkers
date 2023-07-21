@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "../css/btnsCitations.css";
-import DisplayCitations from "./displayCitations.tsx";
+import DisplayCitations from "./displayCitations";
 
 
 

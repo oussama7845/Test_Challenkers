@@ -5,7 +5,7 @@ let path = require('path');
 let env = process.env.NODE_ENV || "development";
 let config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 const axios= require('axios');
-const { Op } = require('sequelize');
+const { Op, where } = require('sequelize');
 
 
 // we can't call the kaamelott api from the front because both server are not in the same domaine (error :: cros) 
@@ -59,7 +59,7 @@ router.get('/fetchallCitations', function (req, res) {
     try {
        
      
-      Citation.findAll().then(citations => {
+      Citation.findAll({where : {favorite : false}}).then(citations => {
         return res.status(200).json(citations);
       });
 
@@ -68,6 +68,22 @@ router.get('/fetchallCitations', function (req, res) {
       return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération des citations." });
     }
   });
+
+  // Get All favorite quotes
+router.get('/fetchallFavorite', function (req, res) {
+    
+  try {
+     
+   
+    Citation.findAll({where :{ favorite : true}}).then(citations => {
+      return res.status(200).json(citations);
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Une erreur s'est produite lors de la récupération des citations." });
+  }
+});
 
 // fetch citation by id 
   

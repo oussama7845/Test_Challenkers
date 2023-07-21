@@ -12,13 +12,13 @@
 
 ## the call of kamelott api !!!!!!
 
-- "in order for you to access the api extern please make sure to access this link first and click on the button to allow access "
+- "To access the Kaamelott API, please make sure to visit this link first and click on the button to allow access:"
 - "LINK --> https://cors-anywhere.herokuapp.com/ "
 
 ## Config Data Base
 
-- "go to api/config/config.json"
-- "change the configuration of database based on your server"
+- "Go to "api/config/config.json"
+- "Modify the database configuration according to your server settings"
 
 
 

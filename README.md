@@ -11,9 +11,9 @@
 - "Bookmark a quote retrieved from the Kaamelott API => in this case, also save the character name and associated episode in another table and display this information in the quote block".
 
 ## -------------------- New Updates: -----------------------------
--Search for a quotation regardless of the placement of the word you choose.
--Render new data if an action is performed without refreshing.
--use the kamelott api without disabling the security cores.
+- "Search for a quotation regardless of the placement of the word you choose"
+- "Render new data if an action is performed without refreshing"
+- "use the kamelott api without disabling the security cores"
 ## ---------------------------------------------------------------
 
 ## Config Data Base

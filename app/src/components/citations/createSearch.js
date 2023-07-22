@@ -23,7 +23,7 @@ function CreateSearch() {
   };
 
   
-
+/*
   useEffect(() => {
     // Set up an interval to call the method every 1 second
     const interval = setInterval(() => {
@@ -32,7 +32,7 @@ function CreateSearch() {
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(interval);
-  }, []);
+  }, []);*/
   
 
   const handleSearch = async () => {

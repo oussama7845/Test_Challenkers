@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useReducer} from "react";
 import "../css/favorite.css";
 import Edit from "../popups/edit";
 import Delete from "../popups/delete";
 import axios from 'axios';
 
-
-function MesCitations(resSearch) {
+  
+function MesCitations( {resSearch ,reducerValuee} ) {
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
   const [citations, setCitations] = useState([]);
   const [signalEdit, setSignalEdit] = useState(false);
 
-
-
  
-  useEffect(() => {
-    getAllCitation();
-  }, []);
+useEffect(() => {
+  getAllCitation();
+}, [reducerValue, reducerValuee]);
 
-  
 
   const getAllCitation = async () => {
     try {
@@ -70,8 +68,8 @@ function MesCitations(resSearch) {
       <div className="container_mescitation">
         <div className="line1"></div>
 
-        {resSearch.resSearch.length > 0 ? (
-          resSearch.resSearch.map((c: { id: number; citation: string }) => (
+        {resSearch.length > 0 ? (
+          resSearch.map((c: { id: number; citation: string }) => (
             <div key={c.id} className="fetchallCitations">
               <div className="myquote">
                 <p>{c.citation}</p>
@@ -115,7 +113,7 @@ function MesCitations(resSearch) {
               <div className="line2"></div>
             </div>
           ))
-        ) : resSearch.resSearch.length === 0 ? (
+        ) : resSearch.length === 0 ? (
           <p className="emptysearchquote">La citations que vous cherchez n'existe pas</p>
         ) : citations.length > 0 ? (
           citations.map((c: { id: number; citation: string }) => (
@@ -167,8 +165,8 @@ function MesCitations(resSearch) {
         )}
       </div>
 
-      <Edit detectSignalEdit={signalEdit} resetSignal={() => setSignalEdit(false)} showEditPopup={showEditPopup} idCitation={idCitation} closeEditPopup={closeEditPopup} />
-      <Delete showDeletePopup={showDeletePopup} idCitation={idCitation} closeDeletePopup={closeDeletePopup} />
+      <Edit forceUpdate={forceUpdate}  detectSignalEdit={signalEdit} resetSignal={() => setSignalEdit(false)} showEditPopup={showEditPopup} idCitation={idCitation} closeEditPopup={closeEditPopup} />
+      <Delete   forceUpdate={forceUpdate}  showDeletePopup={showDeletePopup} idCitation={idCitation} closeDeletePopup={closeDeletePopup} />
     </div>
   );
 }

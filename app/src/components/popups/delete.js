@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 
 
 
-function Delete({ showDeletePopup, idCitation , closeDeletePopup }) {
+function Delete({ showDeletePopup, idCitation , closeDeletePopup, forceUpdate  }) {
+
 
 
   const confirm = async () => {
@@ -14,8 +15,8 @@ function Delete({ showDeletePopup, idCitation , closeDeletePopup }) {
       
       if (response.status === 200) {
         closeDeletePopup();
-        window.location.reload();
         toast.success('Citation supprimée avec succès');
+        forceUpdate();
 
         
      

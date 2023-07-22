@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useReducer, useEffect } from "react";
 import axios from "axios";
 import "../css/createSearch.css";
 import Create from "../popups/create";
@@ -8,10 +8,15 @@ function CreateSearch() {
   const [showCreatePopup, setShowCreatePopup] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [resSearch, setResSearch] = useState(1); 
-
+  const [reducerValuee, forceUpdate] = useReducer((x) => x + 1, 0);
+ 
   const closeCreatePopup = () => {
     setShowCreatePopup(false);
   };
+
+  useEffect(()=>{
+
+  },[reducerValuee]);
 
   const createButton = () => {
     setShowCreatePopup(true);
@@ -98,7 +103,7 @@ function CreateSearch() {
           </svg>
         </div>
       </div>
-      <Create showCreatePopup={showCreatePopup} closeCreatePopup={closeCreatePopup} />
+      <Create   forceUpdate={forceUpdate} showCreatePopup={showCreatePopup} closeCreatePopup={closeCreatePopup} />
     
 
 
@@ -106,11 +111,9 @@ function CreateSearch() {
 
 
     </div>
-    <MesCitations 
- 
-     resSearch={resSearch}  
+    <MesCitations resSearch={resSearch} reducerValuee={reducerValuee} />
 
-     />
+
 
     </div>
 

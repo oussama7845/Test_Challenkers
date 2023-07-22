@@ -3,7 +3,8 @@ import "../css/edit.css";
 import axios from "axios";
 import { toast } from 'react-toastify';
 
-function Create({ showCreatePopup, closeCreatePopup }) {
+function Create({ showCreatePopup, forceUpdate, closeCreatePopup }) {
+
   const [citation, setCitation] = useState("");
   const [auteur, setAuteur] = useState("");
   const [acteur, setActeur] = useState("");
@@ -26,8 +27,8 @@ function Create({ showCreatePopup, closeCreatePopup }) {
 
       if (response.status === 201) {
          closeCreatePopup(); // appeler la function qui close le pop up
-         window.location.reload();
         toast.success("Citation enregistrée avec succès");
+        forceUpdate();
 
         
       } else {

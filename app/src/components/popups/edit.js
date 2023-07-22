@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
  
-function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEditPopup }) {
+function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEditPopup, forceUpdate }) {
 
     const [citation, setCitation] = useState('');
     const [auteur, setAuteur] = useState('');
@@ -68,8 +68,8 @@ function Edit({ detectSignalEdit,resetSignal, showEditPopup, idCitation, closeEd
   
         if (response.status === 200) {
           closeEditPopup(); // appeler la function qui close le pop up
-           window.location.reload();
           toast.success("Citation modifiée avec succès");
+          forceUpdate();
   
           
         } else {

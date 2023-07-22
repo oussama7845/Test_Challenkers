@@ -109,7 +109,6 @@ function DisplayCitations({
       } else if (status === 201) {
         setcheckEmptyRandom(1);
 
-        console.log(checkEmptyRandom);
       } else {
         throw new Error(
           "Erreur lors de la récupération de la citation aléatoire."

@@ -22,6 +22,19 @@ function CreateSearch() {
     setShowCreatePopup(true);
   };
 
+  
+
+  useEffect(() => {
+    // Set up an interval to call the method every 1 second
+    const interval = setInterval(() => {
+      handleSearch();
+    }, 1000);
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
+  
+
   const handleSearch = async () => {
     try {
       const response = await axios.get("http://localhost:3000/rechercher", {

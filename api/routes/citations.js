@@ -11,6 +11,20 @@ const { Op, where } = require('sequelize');
 
 
 
+//call api extern
+
+router.get('/callapi', async (req, res) => {
+  try {
+    const response = await axios.get('https://kaamelott.chaudie.re/api/random');
+    console.log(response.data.infos.personnage)
+    res.status(200).json(response.data);
+  } catch (err) {
+    console.log('api extern error', err);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+});
+
+
 // search bar
 
 router.get('/rechercher', async (req, res) => {

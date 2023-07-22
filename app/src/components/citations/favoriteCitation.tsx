@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "../css/mesCitations.css";
 import axios from 'axios';
 
-
 function FavoriteCitation() {
 
-    const [favoris, setFavoris] = useState([]);
+  const [favoris, setFavoris] = useState([]);
 
 
 
- 
+
+
   useEffect(() => {
-    getAllFavorite();
-  }, []);
+    // Set up an interval to call the method every 1 second
+    const interval = setInterval(() => {
+      getAllFavorite();
+    }, 1000);
 
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
   
 
   const getAllFavorite = async () => {
@@ -33,7 +38,6 @@ function FavoriteCitation() {
 
 
  
-
 
  
 
@@ -58,6 +62,7 @@ function FavoriteCitation() {
           <p className="emptyquote">Aucune citation en favoris</p>
         )}
       </div>
+      
 
      
     </div>

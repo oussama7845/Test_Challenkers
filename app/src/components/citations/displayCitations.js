@@ -35,32 +35,23 @@ function DisplayCitations({
   //solution ? call the kaamelott from the backend and then call the /api/random in th front :)
 
   const getRandomKaamelottCitation = async () => {
-
-    const apiUrl = "https://kaamelott.chaudie.re/api/random";
-    const corsProxyUrl = "https://cors-anywhere.herokuapp.com/"; // cors-anywhere proxy URL
-
-    await fetch(corsProxyUrl + apiUrl, {
-      headers: {
-        Origin: "http://localhost:8080", // Set the "Origin" header to your localhost URL
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setcheckEmptyRandom(0);
-
-        setCitation(data.citation.citation);
-        setPersonnage(data.infos.personnage);
-        setEpisode(data.infos.episode);
-        setSaison(data.infos.saison);
-        setAuteur(data.infos.auteur);
-        setActeur(data.infos.acteur);
-
-      })
-      .catch((err) => {
-        console.error(err); 
-      });
+    try {
+      const response = await axios.get('http://localhost:3000/callapi'); // Await the axios response directly
+      const data = response.data; // Extract the data from the response
+  
+      // Assuming "data" is an object containing properties like "citation", "infos", etc.
+      setcheckEmptyRandom(0);
+      setCitation(data.citation.citation);
+      setPersonnage(data.infos.personnage);
+      setEpisode(data.infos.episode);
+      setSaison(data.infos.saison);
+      setAuteur(data.infos.auteur);
+      setActeur(data.infos.acteur);
+      console.log(personnage)
+    } catch (err) {
+      console.log(err);
+    }
   };
-
   const addfavoriteCitation = async () => {
     try {
       const body = {
@@ -78,6 +69,7 @@ function DisplayCitations({
 
       if (response.status === 200 || response.status === 202) {
         toast.success("Citation enregistrée avec succès");
+
       } else if (response.status === 201) {
         toast.info("La citation est déjà enregistrée");
       }

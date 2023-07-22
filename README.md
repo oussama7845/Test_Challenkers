@@ -13,7 +13,7 @@
 ## -------------------- New Updates: -----------------------------
 - "Search for a quotation regardless of the placement of the word you choose"
 - "Render new data if an action is performed without refreshing"
-- "use the kamelott api without disabling the security cores"
+- "use the kamelott api without disabling the security cors"
 ## ---------------------------------------------------------------
 
 ## Config Data Base

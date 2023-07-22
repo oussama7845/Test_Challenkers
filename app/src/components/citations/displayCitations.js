@@ -38,10 +38,11 @@ function DisplayCitations({
     try {
       const response = await axios.get('http://localhost:3000/callapi'); // Await the axios response directly
       const data = response.data; // Extract the data from the response
+      console.log(data)
   
       // Assuming "data" is an object containing properties like "citation", "infos", etc.
       setcheckEmptyRandom(0);
-      setCitation(data.citation.citation);
+      setCitation(data.citation);
       setPersonnage(data.infos.personnage);
       setEpisode(data.infos.episode);
       setSaison(data.infos.saison);

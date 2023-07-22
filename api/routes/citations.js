@@ -12,12 +12,12 @@ const { Op, where } = require('sequelize');
 
 
 //call api extern
-
+ // we can't call the kaamelott api from the front because both server are not in the same domaine (error :: cros)
+  //solution ? call the kaamelott from the backend and then call the /api/random in th front :)
 router.get('/callapi', async (req, res) => {
   try {
     const response = await axios.get('https://kaamelott.chaudie.re/api/random');
-    console.log(response.data.infos.personnage)
-    res.status(200).json(response.data);
+    res.status(200).json(response.data.citation);
   } catch (err) {
     console.log('api extern error', err);
     res.status(500).json({ error: 'Something went wrong' });

@@ -5,10 +5,12 @@ import Delete from "../popups/delete";
 import axios from 'axios';
 
   
-function MesCitations( {resSearch ,reducerValuee} ) {
+function MesCitations( {searchTerm ,reducerValuee} ) {
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
   const [citations, setCitations] = useState([]);
   const [signalEdit, setSignalEdit] = useState(false);
+  const [resSearch, setResSearch] = useState([]); 
+
 
  
 useEffect(() => {
@@ -60,7 +62,38 @@ useEffect(() => {
   const closeDeletePopup = () => {
     setShowDeletePopup(false);
   };
+/* Search function*/
+useEffect(() => {
+  // Set up an interval to call the method every 1 second
+  
+ handleSearch();
 
+}, [searchTerm,reducerValue]);
+
+const handleSearch = async () => {
+  try {
+    const response = await axios.get("http://localhost:3000/rechercher", {
+      params: {
+        searchTerm: searchTerm, // Passez la valeur de 'searchTerm' en tant que paramètre de requête
+      },
+    });
+
+    if (response.data.length > 0) {
+      // Des citations ont été trouvées
+      setResSearch(response.data);
+    } else {
+      // Aucune citation trouvée
+      console.log("Aucune citation trouvée pour le terme de recherche");
+      setResSearch(response.data)
+    }
+  } catch (error) {
+    console.error("Une erreur est survenue lors de la recherche des citations :", error);
+  }
+};
+
+
+
+/* ----------------*/
  
 
   return (

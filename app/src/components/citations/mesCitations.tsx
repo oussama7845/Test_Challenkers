@@ -68,7 +68,7 @@ useEffect(() => {
   
  handleSearch();
 
-}, [searchTerm,reducerValue]);
+}, [searchTerm,reducerValue,reducerValuee]);
 
 const handleSearch = async () => {
   try {

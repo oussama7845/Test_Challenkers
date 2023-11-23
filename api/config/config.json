@@ -4,7 +4,7 @@
     "port": 3306,
     "database": "citations",
     "username": "root",
-    "password": "Ytr123654789$a",
+    "password": "$a",
     "dialect": "mysql",
     "privateKey": "NotSoPrivateKey"
   },
